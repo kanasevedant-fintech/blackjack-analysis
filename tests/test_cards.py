@@ -1,8 +1,4 @@
-"""
-Phase 1 spec. Run `pytest` from the project root and write code in
-src/cards.py until every test below passes. Treat these as the definition
-of "correct" — make them green, don't change them.
-"""
+"""Test spec for src/cards.py."""
 from src.cards import Deck, Hand, Card
 
 

@@ -1,23 +1,18 @@
-"""
-cards.py — Phase 1: The card / deck / hand model
-================================================
-This is the FOUNDATION. Everything else imports from here, so make it solid.
+"""Card / Deck / Hand primitives.
 
-The only genuinely tricky bit is `Hand.value` (the soft/hard Ace logic).
-Take your time on that one. Run `pytest` — tests/test_cards.py is your spec.
-
-Constants and class skeletons are given. Fill in the methods marked TODO.
+Hand.value implements the soft/hard Ace rule: an Ace counts as 11 unless
+that would bust the hand, in which case it counts as 1. A hand is "soft"
+while at least one Ace still counts as 11.
 """
 from __future__ import annotations
 import random
 from dataclasses import dataclass
 
-# --- Given to you ---------------------------------------------------------
 RANKS = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"]
 SUITS = ["S", "H", "D", "C"]  # spades, hearts, diamonds, clubs
 
-# Blackjack value of each rank. Ace is 11 here; the "Ace can also be 1"
-# logic lives inside Hand.value (so you don't lose information up front).
+# Aces are 11 here; the "Ace can also be 1" rule lives in Hand.value so
+# the per-card value remains a single integer.
 CARD_VALUES = {
     "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9,
     "10": 10, "J": 10, "Q": 10, "K": 10, "A": 11,

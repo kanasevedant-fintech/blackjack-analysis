@@ -1,9 +1,10 @@
-"""
-simulation.py — Phase 5: Monte Carlo engine
-===========================================
-Play many hands following a strategy; measure win/push/loss, EV, variance.
-The simulated edge should CONVERGE to your Phase 2-4 exact numbers. That
-agreement is your validation and the headline result of the project.
+"""Monte Carlo blackjack engine.
+
+play_one_hand deals one round (player + dealer), plays the player via the
+supplied strategy function, plays the dealer per the casino rule, and
+returns the net profit in betting units (blackjack pays 1.5×).
+
+run_simulation iterates and aggregates results into a SimResult.
 """
 from dataclasses import dataclass
 from .cards import Deck, Hand

@@ -1,19 +1,18 @@
-"""
-kelly.py — Phase 7: Kelly criterion & bankroll
-==============================================
-Reference: Thorp (2006).
-Kelly: wager a fraction f* of your bankroll proportional to your edge.
-For an (approximately) even-money bet:  f* ~= edge / variance.
+"""Kelly criterion and bankroll simulation.
 
-Goal: compare bankroll growth and risk of ruin for Kelly vs flat betting.
+For an approximately even-money bet, f* = edge / variance maximises
+log-bankroll growth. kelly_fraction returns f*; simulate_bankroll plays
+N hands at the given fraction; risk_of_ruin estimates the probability the
+bankroll ever hits zero.
 """
 import random
 
 
 def kelly_fraction(edge: float, variance: float = 1.0) -> float:
-    """Optimal fraction of bankroll to bet. Start simple: f* = edge / variance.
-    (For blackjack, variance per unit bet is roughly ~1.3; refine later.)
-    Never return a negative fraction — if edge <= 0, you bet 0 (or table min).
+    """Optimal Kelly fraction: f* = edge / variance.
+
+    For blackjack the variance per unit bet is roughly 1.3 (under full basic
+    strategy). Returns 0 when edge <= 0 (don't bet at a disadvantage).
     """
     if edge <= 0:
         return 0.0

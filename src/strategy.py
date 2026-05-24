@@ -1,13 +1,9 @@
-"""
-strategy.py — Phase 4: Expected value & basic strategy
-======================================================
-Reference: Thorp — basic strategy drops the house edge from ~4% to ~0.5%.
+"""Expected-value computation and basic-strategy table.
 
-For every (player total, dealer upcard) you compute the EV of each action and
-keep the best. Start SMALL: only HIT vs STAND on hard totals. Get that working
-and validated, THEN add DOUBLE and SPLIT.
-
-You'll lean on the dealer distribution from Phase 3.
+For each (player total, dealer upcard) pair we compute the EV of standing
+versus hitting and choose the higher. Currently HIT/STAND only (no doubles
+or splits), so the resulting edge sits around -3% rather than the textbook
+-0.5% for full basic strategy.
 """
 from .dealer import dealer_distribution
 from .cards import CARD_VALUES

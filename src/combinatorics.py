@@ -1,11 +1,6 @@
-"""
-combinatorics.py — Phase 2: Exact two-card probabilities
-========================================================
+"""Exact two-card probabilities via combinatorics.
 
-This module computes exact probabilities for the first two cards in blackjack.
-It uses counting and combinations only; there is no simulation here.
-
-Reference: "Blackjack: the math behind the cards".
+No simulation — uses math.comb directly on the shoe composition.
 """
 from math import comb
 

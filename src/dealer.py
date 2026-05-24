@@ -1,13 +1,11 @@
-"""
-dealer.py — Phase 3: Dealer outcome distribution
-================================================
-The dealer follows a fixed rule: hit on 16 or less, stand on 17+.
-(Flip hit_soft_17=True later for the common "H17" casino rule.)
+"""Dealer outcome distribution per upcard.
 
-Goal: for each dealer upcard, find P(final total = 17/18/19/20/21/bust).
-Do it TWO ways and confirm they agree:
-  - simulate_dealer(...)      -> Monte Carlo
-  - dealer_distribution(...)  -> exact recursion (advanced, optional at first)
+Two independent implementations:
+  - simulate_dealer     — Monte Carlo on a finite shoe
+  - dealer_distribution — exact recursion under infinite-deck approximation
+
+The dealer rule is S17 by default (stand on all 17s). Pass hit_soft_17=True
+for H17 (hit on soft 17).
 """
 from collections import Counter
 from functools import lru_cache
@@ -15,7 +13,7 @@ from .cards import Deck, Hand, Card, RANKS
 
 
 def dealer_should_hit(total: int, is_soft: bool, hit_soft_17: bool = False) -> bool:
-    """Encodes the casino rule. (Given to you.)"""
+    """Casino dealer rule: hit on totals below 17, plus soft 17 if hit_soft_17."""
     if total < 17:
         return True
     if total == 17 and is_soft and hit_soft_17:

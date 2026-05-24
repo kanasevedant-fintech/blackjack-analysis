@@ -1,14 +1,11 @@
-"""
-counting.py — Phase 6: Card counting (Hi-Lo)
-============================================
-Reference: the PyCount paper (Hi-Lo, running count, true count).
+"""Hi-Lo card counting.
 
-Hi-Lo tag values (given):
-    2,3,4,5,6  -> +1     (low cards gone => good for player)
-    7,8,9      ->  0
-    10,J,Q,K,A -> -1     (high cards gone => bad for player)
+Tag values:
+    2..6   -> +1   (low cards gone -> favours the player)
+    7..9   ->  0
+    10..A  -> -1   (high cards gone -> favours the dealer)
 
-running_count = sum of tags of all cards seen so far
+running_count = sum of tags of cards seen so far
 true_count    = running_count / decks_remaining
 """
 
